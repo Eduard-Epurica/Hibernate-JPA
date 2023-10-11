@@ -23,14 +23,37 @@ public class CruddemoApplication {
 		return runnter -> {
 
 			//createStudent(studentDAO);
+			createMultipleStudentds(studentDAO);
 			//readStudent(studentDAO);
 			//queryForStudents(studentDAO);
 			//queryForStudentsByLastName(studentDAO);
 			//updateStudent(studentDAO, 3);
 			//deleteStudent(studentDAO, 2);
-			deleteAllStudents(studentDAO);
+			//deleteAllStudents(studentDAO);
 		};
 
+	}
+
+	private void createMultipleStudentds(StudentDAO studentDAO) {
+		//create the student objects
+		System.out.println("Creating new student object...");
+		Student newStudent = new Student("Ana","Safta","ana.safta@gmail.com");
+		Student newStudent1 = new Student("Eduard","Epurica","ana.safta@gmail.com");
+		Student newStudent2 = new Student("Theo","Mezat","ana.safta@gmail.com");
+		Student newStudent3 = new Student("Vlad","Manole","ana.safta@gmail.com");
+
+		//save the student objects
+		System.out.println("Saving the student...");
+		studentDAO.save(newStudent);
+		studentDAO.save(newStudent1);
+		studentDAO.save(newStudent2);
+		studentDAO.save(newStudent3);
+
+		//display id of the saved students
+		System.out.println("Saved student. Generated ID: " + newStudent.getId());
+		System.out.println("Saved student. Generated ID: " + newStudent1.getId());
+		System.out.println("Saved student. Generated ID: " + newStudent2.getId());
+		System.out.println("Saved student. Generated ID: " + newStudent3.getId());
 	}
 
 	private void deleteAllStudents(StudentDAO studentDAO) {
